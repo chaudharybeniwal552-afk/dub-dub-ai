@@ -239,6 +239,114 @@ tailwind.config = {
   ::-webkit-scrollbar-thumb:hover { background: #7C3AED; }
 
   select option { background: #0B1124; color: #E2E8F0; }
+  /* ===== MOBILE RIGHT-SIDE OVERFLOW FIX ===== */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+section,
+header,
+nav,
+main,
+footer,
+div {
+  min-width: 0;
+}
+
+/* Prevent flex/grid children from forcing page wider */
+.flex > *,
+.grid > * {
+  min-width: 0;
+}
+
+/* Long text must wrap instead of pushing screen */
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a,
+button,
+label {
+  overflow-wrap: anywhere;
+}
+
+/* Horizontal scrolling should stay inside its own component */
+.overflow-x-auto {
+  max-width: 100%;
+  scrollbar-width: thin;
+}
+
+/* Marquee is intentionally wider than screen */
+.marquee-track {
+  max-width: none;
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  .max-w-7xl {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  nav .flex {
+    min-width: 0;
+  }
+
+  nav a {
+    max-width: 100%;
+  }
+
+  header {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  header > div {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .glass,
+  .glass-soft {
+    max-width: 100%;
+  }
+
+  textarea,
+  input,
+  select {
+    max-width: 100%;
+  }
+
+  canvas {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  /* Prevent buttons from creating horizontal overflow */
+  button,
+  a {
+    max-width: 100%;
+  }
+}
 </style>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-black">
